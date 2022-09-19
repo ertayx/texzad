@@ -1,7 +1,4 @@
-from peewee import PostgresqlDatabase
 import peewee
-
-psql_db = PostgresqlDatabase('my_database', user='postgres')
 
 from config import postgres_db
 
