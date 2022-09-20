@@ -5,15 +5,16 @@ import itertools
 from orm import Pars
 today = date.today()
 def main():
-    for page in itertools.count(start=1):
+    for page in itertools.count(start=2):
 
         url = f'https://www.kijiji.ca/b-apartments-condos/city-of-toronto/page-{page}/c37l1700273'
 
         r = requests.get(url)
-
+        print(r.url)
+        print(url)
         if not r.url == url:
             break
-        # print(url)
+        print(url)
 
         soup = bs4.BeautifulSoup(r.text, 'lxml')
 
@@ -29,8 +30,11 @@ def main():
 
             if 'Contact' in price:
                 price = '0'
-            # print(price)
 
+            if len(price) > 50:
+                price.split()
+                price=price[0:20]
+                # print(price)
             Pars.create(date=date_posted, images=imge, price=price)
 
 if __name__ == '__main__':

@@ -11,7 +11,7 @@ class BaseModel(Model):
 class Pars(BaseModel):
     date = peewee.CharField(max_length=100)
     images = peewee.CharField(max_length=220, null=True)
-    price = peewee.CharField(max_length=255, null=True)
+    price = peewee.CharField(max_length=50, null=True)
 
 postgres_db.connect()
 
